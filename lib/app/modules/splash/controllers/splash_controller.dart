@@ -1,23 +1,12 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
+import 'package:perlombokan/app/routes/app_pages.dart';
 
 class SplashController extends GetxController {
-  //TODO: Implement SplashController
-
-  final count = 0.obs;
   @override
   void onInit() {
+    Timer(const Duration(seconds: 3), () => Get.offNamed(Routes.home));
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

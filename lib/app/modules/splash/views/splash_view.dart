@@ -26,7 +26,7 @@ class SplashView extends GetView<SplashController> {
             ),
             Text(
               "Chilies",
-              style: primaryTextStyle.copyWith(fontSize: 54, fontWeight: bold),
+              style: primaryTextStyle.copyWith(fontSize: 34, fontWeight: bold),
             ),
             const SizedBox(
               height: 50,

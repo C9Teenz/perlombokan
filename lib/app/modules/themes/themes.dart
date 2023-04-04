@@ -5,9 +5,13 @@ Color kBlackColor = const Color(0xff000000);
 Color kWhiteColor = const Color(0xffF8FAFF);
 Color kPrimaryColor = const Color(0xffB40100);
 Color kRedColor = const Color(0xffFB7185);
+Color kOrangeColor = const Color(0xffFE9D34);
+Color kGreyColor = const Color(0xffD2D2D2);
+Color kBlueColor = const Color(0xff102A68);
 
-TextStyle primaryTextStyle = GoogleFonts.poppins(color: kRedColor);
+TextStyle primaryTextStyle = GoogleFonts.poppins(color: kPrimaryColor);
 TextStyle blackTextStyle = GoogleFonts.poppins(color: kBlackColor);
+TextStyle orangeTextStyle = GoogleFonts.poppins(color: kOrangeColor);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
