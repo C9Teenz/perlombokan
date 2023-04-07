@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:perlombokan/app/modules/widgets/card_item.dart';
 import 'package:perlombokan/app/modules/widgets/category_item.dart';
 import '../../themes/themes.dart';
 
@@ -10,10 +11,12 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: kWhiteColor,
+      backgroundColor: kBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.only(top: 30, right: 16, left: 16),
+        padding:
+            const EdgeInsets.only(top: 30, right: 16, left: 16, bottom: 20),
         child: Column(
           children: [
             Flexible(
@@ -24,18 +27,33 @@ class HomeView extends GetView<HomeController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    RichText(
-                      text: TextSpan(
-                        text: 'Perlom',
-                        style: primaryTextStyle.copyWith(
-                            fontSize: 34, fontWeight: bold),
-                        children: [
-                          TextSpan(
-                              text: "bokan",
-                              style: orangeTextStyle.copyWith(
-                                  fontSize: 34, fontWeight: bold))
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            text: 'Perlom',
+                            style: primaryTextStyle.copyWith(
+                                fontSize: 34, fontWeight: bold),
+                            children: [
+                              TextSpan(
+                                  text: "bokan",
+                                  style: orangeTextStyle.copyWith(
+                                      fontSize: 34, fontWeight: bold))
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                    'assets/images/notlogin.png',
+                                  ),
+                                  fit: BoxFit.contain)),
+                        )
+                      ],
                     ),
                     const SizedBox(
                       height: 8,
@@ -94,11 +112,13 @@ class HomeView extends GetView<HomeController> {
                     crossAxisSpacing: 8.0,
                     mainAxisSpacing: 8.0,
                   ),
-                  itemCount: 6,
+                  itemCount: 8,
                   itemBuilder: (context, index) {
-                    return Container(
-                      color: Colors.blue,
-                      child: Text("index: $index"),
+                    final double heightCon = height * 1 / 8;
+                    final double heightC = (heightCon * 3) / 2.3;
+                    return CardItem(
+                      heightContainer: heightCon,
+                      heightC: heightC,
                     );
                   },
                 ))
