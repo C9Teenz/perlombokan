@@ -43,7 +43,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.toNamed(Routes.login);
+                          Get.toNamed(Routes.admin);
                         },
                         child: Container(
                           height: 40,
