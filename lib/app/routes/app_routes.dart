@@ -8,6 +8,7 @@ abstract class Routes {
   static const detail = _Paths.detail;
   static const admin = _Paths.admin;
   static const login = _Paths.login;
+  static const addItem = _Paths.addItem;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const detail = '/detail';
   static const admin = '/admin';
   static const login = '/login';
+  static const addItem = '/add-item';
 }

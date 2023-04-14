@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:perlombokan/app/modules/themes/themes.dart';
 import 'package:perlombokan/app/modules/widgets/card_admin.dart';
+import 'package:perlombokan/app/routes/app_pages.dart';
 
 import '../../widgets/button.dart';
 import '../controllers/admin_controller.dart';
@@ -37,9 +38,21 @@ class AdminView extends GetView<AdminController> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              CardAdmin(title: "Add Data", icon: Icons.add_card_outlined),
-              CardAdmin(title: "Home", icon: Icons.read_more),
+            children: [
+              CardAdmin(
+                title: "Add Data",
+                icon: Icons.add_card_outlined,
+                onclick: () {
+                  Get.toNamed(Routes.addItem);
+                },
+              ),
+              CardAdmin(
+                title: "Home",
+                icon: Icons.read_more,
+                onclick: () {
+                  Get.toNamed(Routes.home);
+                },
+              ),
             ],
           ),
           Row(

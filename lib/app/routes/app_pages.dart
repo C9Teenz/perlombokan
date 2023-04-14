@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/add_item/bindings/add_item_binding.dart';
+import '../modules/add_item/views/add_item_view.dart';
 import '../modules/admin/bindings/admin_binding.dart';
 import '../modules/admin/views/admin_view.dart';
 import '../modules/detail/bindings/detail_binding.dart';
@@ -41,6 +43,11 @@ class AppPages {
       name: _Paths.login,
       page: () => const LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.addItem,
+      page: () => const AddItemView(),
+      binding: AddItemBinding(),
     ),
   ];
 }
