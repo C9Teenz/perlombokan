@@ -6,7 +6,16 @@ import 'package:perlombokan/app/routes/app_pages.dart';
 class CardItem extends StatelessWidget {
   final double heightContainer;
   final double heightC;
-  const CardItem({super.key, this.heightContainer = 300, this.heightC = 200});
+  final String image;
+  final String name;
+  final String scientistName;
+  const CardItem(
+      {super.key,
+      this.heightContainer = 300,
+      this.heightC = 200,
+      required this.image,
+      required this.name,
+      required this.scientistName});
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +33,13 @@ class CardItem extends StatelessWidget {
           children: [
             Container(
               height: heightC,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(9),
                   topRight: Radius.circular(9),
                 ),
                 image: DecorationImage(
-                    image: AssetImage("assets/images/rawitmerah.jpg"),
-                    fit: BoxFit.cover),
+                    image: NetworkImage(image), fit: BoxFit.cover),
               ),
             ),
             Container(
@@ -41,12 +49,12 @@ class CardItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Rawit Merah',
+                    name,
                     style: primaryTextStyle.copyWith(
                         fontWeight: bold, fontSize: 14),
                   ),
                   Text(
-                    "Capsicum frutescens",
+                    scientistName,
                     style: greyTextStyle.copyWith(
                         fontWeight: semiBold, fontSize: 12),
                   )

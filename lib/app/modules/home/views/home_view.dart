@@ -111,24 +111,36 @@ class HomeView extends GetView<HomeController> {
                 child: SingleChildScrollView(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(),
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 8.0,
-                    mainAxisSpacing: 8.0,
-                  ),
-                  itemCount: 8,
-                  itemBuilder: (context, index) {
-                    final double heightCon = height * 1 / 8;
-                    final double heightC = (heightCon * 3) / 2.3;
-                    return CardItem(
-                      heightContainer: heightCon,
-                      heightC: heightC,
+                child: Obx(() {
+                  if (controller.chiliesData.isEmpty) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
-                  },
-                ),
+                  }
+                  return GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
+                    ),
+                    itemCount: controller.chiliesData.length,
+                    itemBuilder: (context, index) {
+                      final double heightCon = height * 1 / 8;
+                      final double heightC = (heightCon * 3) / 2.3;
+                      return CardItem(
+                        heightContainer: heightCon,
+                        heightC: heightC,
+                        image: controller.chiliesData[index].image,
+                        name: controller.chiliesData[index].name,
+                        scientistName:
+                            controller.chiliesData[index].scientificName,
+                      );
+                    },
+                  );
+                }),
               ),
             ))
           ],

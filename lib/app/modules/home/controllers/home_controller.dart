@@ -1,23 +1,26 @@
 import 'package:get/get.dart';
+import 'package:dio/dio.dart';
+import 'package:perlombokan/app/data/helper/api_chili.dart';
+import 'package:perlombokan/app/data/models/chili_model.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  var chiliesData = <ChiliModel>[].obs;
+  final dio = Dio();
 
-  final count = 0.obs;
   @override
   void onInit() {
+    getData();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Future<List<ChiliModel>> getData() async {
+    try {
+      var result = await dio.get(ApiChili.baseUrl);
+      final List data = result.data['data'];
+      chiliesData.value = data.map((e) => ChiliModel.fromJson(e)).toList();
+      return chiliesData;
+    } catch (e) {
+      rethrow;
+    }
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
