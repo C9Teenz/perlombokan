@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:perlombokan/app/modules/widgets/button.dart';
+import '../../widgets/button.dart';
 
 import '../../themes/themes.dart';
 import '../controllers/login_controller.dart';
@@ -10,6 +10,8 @@ class LoginView extends GetView<LoginController> {
   const LoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final TextEditingController userC = TextEditingController();
+    final TextEditingController passC = TextEditingController();
     return Scaffold(
       backgroundColor: kWhiteColor,
       body: Padding(
@@ -54,6 +56,7 @@ class LoginView extends GetView<LoginController> {
             SizedBox(
               child: TextFormField(
                 keyboardType: TextInputType.text,
+                controller: userC,
                 decoration: InputDecoration(
                     focusColor: kOrangeColor,
                     prefixIcon: const Icon(
@@ -77,6 +80,7 @@ class LoginView extends GetView<LoginController> {
             SizedBox(
               child: TextFormField(
                 keyboardType: TextInputType.text,
+                controller: passC,
                 obscureText: true,
                 decoration: InputDecoration(
                     suffixIcon: const Icon(Icons.remove_red_eye_rounded),
@@ -101,7 +105,9 @@ class LoginView extends GetView<LoginController> {
                   alignment: Alignment.bottomCenter,
                   child: Button(
                       height: 50,
-                      onclick: () {},
+                      onclick: () {
+                        controller.login(userC.text, passC.text);
+                      },
                       text: "Login",
                       bgColor: kOrangeColor)),
             )

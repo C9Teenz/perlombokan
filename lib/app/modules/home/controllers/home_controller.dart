@@ -5,6 +5,8 @@ import 'package:perlombokan/app/data/models/chili_model.dart';
 
 class HomeController extends GetxController {
   var chiliesData = <ChiliModel>[].obs;
+  var filterName = <ChiliModel>[].obs;
+
   final dio = Dio();
 
   @override
@@ -19,6 +21,23 @@ class HomeController extends GetxController {
       final List data = result.data['data'];
       chiliesData.value = data.map((e) => ChiliModel.fromJson(e)).toList();
       return chiliesData;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  void findChilies(String name) {
+    try {
+      List<ChiliModel> result = [];
+      if (name.isEmpty) {
+        result = chiliesData;
+      } else {
+        result = chiliesData
+            .where((e) => e.name.toLowerCase().contains(name.toLowerCase()))
+            .toList();
+      }
+
+      filterName.value = result;
     } catch (e) {
       rethrow;
     }
