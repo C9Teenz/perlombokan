@@ -1,13 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:perlombokan/app/data/helper/api_chili.dart';
-import 'package:perlombokan/app/data/models/user_model.dart';
+
 import 'package:perlombokan/app/routes/app_pages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
-  var userData = UserModel(name: "").obs;
-
   RxString token = "".obs;
   var dio = Dio();
 

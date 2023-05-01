@@ -53,18 +53,18 @@ class HomeView extends GetView<HomeController> {
                                 ? Get.toNamed(Routes.login)
                                 : Get.toNamed(Routes.admin);
                           },
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                      (auth.token.isEmpty)
-                                          ? 'assets/images/notlogin.png'
-                                          : 'assets/images/haslogin.png',
-                                    ),
-                                    fit: BoxFit.contain)),
-                          ),
+                          child: Obx(() => Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                          (auth.token.isEmpty)
+                                              ? 'assets/images/notlogin.png'
+                                              : 'assets/images/haslogin.png',
+                                        ),
+                                        fit: BoxFit.contain)),
+                              )),
                         )
                       ],
                     ),

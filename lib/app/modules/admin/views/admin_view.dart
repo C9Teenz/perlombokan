@@ -28,11 +28,11 @@ class AdminView extends GetView<AdminController> {
                       image: AssetImage("assets/images/haslogin.png"))),
             ),
           ),
-          Text(
-            "Admin",
-            style:
-                primaryTextStyle.copyWith(fontWeight: semiBold, fontSize: 30),
-          ),
+          Obx(() => Text(
+                controller.userData.value.name,
+                style: primaryTextStyle.copyWith(
+                    fontWeight: semiBold, fontSize: 30),
+              )),
           const SizedBox(
             height: 16,
           ),
@@ -67,7 +67,9 @@ class AdminView extends GetView<AdminController> {
               alignment: Alignment.bottomCenter,
               child: Button(
                   height: 50,
-                  onclick: () {},
+                  onclick: () {
+                    controller.logOut();
+                  },
                   text: "Logout",
                   bgColor: kOrangeColor),
             ),
