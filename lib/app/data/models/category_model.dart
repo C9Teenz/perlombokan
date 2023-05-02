@@ -1,5 +1,5 @@
-class Categories {
-  Categories({
+class CategoryModel {
+  CategoryModel({
     required this.id,
     required this.name,
     required this.createdAt,
@@ -11,7 +11,7 @@ class Categories {
   DateTime createdAt;
   DateTime updatedAt;
 
-  factory Categories.fromJson(Map<String, dynamic> json) => Categories(
+  factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
         id: json["id"] ?? 0,
         name: json["name"] ?? "",
         createdAt: DateTime.parse(json["createdAt"]),

@@ -8,18 +8,21 @@ class InputText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        focusColor: kOrangeColor,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(9),
-          borderSide: BorderSide.none,
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      child: TextFormField(
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          focusColor: kOrangeColor,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(9),
+            borderSide: BorderSide.none,
+          ),
+          filled: true,
+          fillColor: kLightOrangeColor,
+          labelText: name,
+          labelStyle: orangeTextStyle.copyWith(fontWeight: bold),
         ),
-        filled: true,
-        fillColor: kLightOrangeColor,
-        labelText: name,
-        labelStyle: orangeTextStyle.copyWith(fontWeight: bold),
       ),
     );
   }
