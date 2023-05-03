@@ -13,7 +13,7 @@ class AddItemView extends GetView<AddItemController> {
   @override
   Widget build(BuildContext context) {
     final homeC = Get.find<HomeController>();
-
+    final TextEditingController imageC = TextEditingController();
     return Scaffold(
       body: ListView(
         padding:
@@ -26,6 +26,35 @@ class AddItemView extends GetView<AddItemController> {
           const InputText(name: "Name"),
           const InputText(name: "Scientific Name"),
           const InputText(name: "SHU"),
+          Container(
+            margin: const EdgeInsets.only(bottom: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    controller: imageC,
+                    onChanged: (value) => controller.updateText(value),
+                    decoration: InputDecoration(
+                        focusColor: kOrangeColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(9),
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: kLightOrangeColor,
+                        hintText: 'Choose an image',
+                        hintStyle: orangeTextStyle),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.image),
+                  onPressed: () {
+                    controller.getImage();
+                  },
+                ),
+              ],
+            ),
+          ),
           Obx(
             () => DropdownButtonHideUnderline(
               child: DropdownButton2(
