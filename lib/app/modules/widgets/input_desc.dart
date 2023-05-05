@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../themes/themes.dart';
 
-class InputText extends StatelessWidget {
-  final String name;
-  final TextEditingController nameController;
-  const InputText(
-      {super.key, required this.name, required this.nameController});
+class InputDesc extends StatelessWidget {
+  final String desc;
+  final TextEditingController descC;
+  const InputDesc({super.key, required this.desc, required this.descC});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       child: TextFormField(
+        minLines: 3,
+        maxLines: 6,
+        controller: descC,
         keyboardType: TextInputType.text,
-        controller: nameController,
         decoration: InputDecoration(
           focusColor: kOrangeColor,
           border: OutlineInputBorder(
@@ -23,7 +24,7 @@ class InputText extends StatelessWidget {
           ),
           filled: true,
           fillColor: kLightOrangeColor,
-          labelText: name,
+          labelText: desc,
           labelStyle: orangeTextStyle.copyWith(fontWeight: bold),
         ),
       ),
